@@ -114,6 +114,48 @@ body, html {
 
 /* Header */
 
+
+.burger-menu-button {
+    display: none;
+    right: 30px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    z-index: 2;
+}
+
+.burger-menu-button span{
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    left: 5px;
+    transition: transform .5s, opacity .5s, background-color .5s;
+}
+
+.burger-menu-button span:nth-child(1){
+    transform: translateY(-10px);
+}
+
+.burger-menu-button span:nth-child(3){
+    transform: translateY(10px);
+}
+
+.header.open .burger-menu-button span:nth-child(1){
+    transform: translateY(0) rotate(45deg);
+}
+
+.header.open .burger-menu-button span:nth-child(2){
+    opacity: 0;
+}
+
+.header.open .burger-menu-button span:nth-child(3){
+    transform: translateY(0) rotate(-45deg);
+}
+
+
 .header {
     position: fixed;
     top: 0;
@@ -675,6 +717,13 @@ header.hidden {
     display: none;
 }
 
+@media(max-width: 1660px) {
+    .footer-center_title {
+        font-size: 3em;
+        max-width: 600px;
+    }
+}
+
 @media(max-width:768px) {
     .intro{
         display: flex;
@@ -711,4 +760,115 @@ header.hidden {
         display: block;
         width: 90vw;
     }
+
+    .footer {
+        max-height: 800px;
+    }
+
+    .footer-center_right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 248px;
+        z-index: 0;
+    }
+
+    .footer-center_left {
+        position: absolute;
+        left: 0;
+        bottom: -260px;
+        width: 233px;
+        z-index: 0;
+    }
+
+    .footer-center_button {
+        width: 257px;
+    }
+
+    .footer-center_title {
+        max-width: 257px;
+        font-size: 40px;
+    }
+
+    .footer-center_first-picture {
+        width: 73px;
+    }
+
+    .footer-center_second-picture {
+        width: 138px;
+    }
+
+    .footer-center_content {
+        margin-top: 220px;
+    }
+
+    .footer-sssr {
+        top: 240px;
+        left: 21px;
+    }
+
+    .footer-history {
+        left: 100px;
+        top: 350px;
+    }
+
+    .footer-communism {
+        left: 200px;
+        top: 90px;
+    }
+
+    .footer-center {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-container {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 100px 0 0 0;
+        transition: transform .5s;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        row-gap: 20px;
+        margin: 0;
+        z-index: 1;
+        row-gap: 50px;
+        backdrop-filter: blur(20px);
+        background: rgba(13, 13, 13, 0.6);
+
+    }
+
+    .burger-menu-button {
+        display: block;
+    }
+
+    .header-phone {
+        display: none;
+    }
+
+    .header.open .header-nav {
+        transform: translateX(100%);
+    }
+
+    .header-nav__list {
+        flex-direction: column;
+        align-items: end;
+        padding-right: 50px;
+    }
+
+    .header-nav__item {
+        color: white;
+    }
+
 }
