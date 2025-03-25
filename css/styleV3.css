@@ -1,0 +1,714 @@
+@font-face {
+    font-family: 'VelaSans-Bold';
+    src: url('../fonts/VS/VelaSans-Bold.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VelaSans-ExtraBold';
+    src: url('../fonts/VS/VelaSans-ExtraBold.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VelaSans-ExtraLight';
+    src: url('../fonts/VS/VelaSans-ExtraLight.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-ExtraLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VelaSans-Light';
+    src: url('../fonts/VS/VelaSans-Light.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VelaSans-Medium';
+    src: url('../fonts/VS/VelaSans-Medium.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'VelaSans-Regular';
+    src: url('../fonts/VS/VelaSans-Regular.woff2') format('woff2'),
+        url('../fonts/VS/VelaSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Konstruktor';
+    src: url('../fonts/KS/Konstruktor-vmmxL.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Bold';
+    src: url('../fonts/HN/HelveticaNeue-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Light';
+    src: url('../fonts/HN/HelveticaNeue-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Medium';
+    src: url('../fonts/HN/HelveticaNeue-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Roman';
+    src: url('../fonts/HN/HelveticaNeue-Roman.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Thin';
+    src: url('../fonts/HN/HelveticaNeue-Thin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Header */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95%;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    padding: 15px 30px;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.header-nav__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-nav__item {
+    text-decoration: none;
+    list-style: none;
+    font-family: VelaSans-Medium;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.header-nav__item:first-of-type {
+    color: red;
+}
+
+.header-nav__list span {
+    text-decoration: none;
+    list-style: none;
+    font-family: VelaSans-Medium;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+/* Header */
+
+
+/* Main */
+
+.main {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box; /* Важно! */
+    overflow: hidden; /* Скрываем выходящие за границы элементы */
+}
+
+.main > section {
+    position: absolute;
+    top: 30px; /* Учитываем padding родителя */
+    left: 30px;
+    right: 30px; /* Вместо width */
+    bottom: 30px; /* Вместо height */
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), 
+                opacity 0.8s ease;
+    transform: translateY(100%);
+    opacity: 0;
+    font-size: 3rem;
+    color: white;
+    pointer-events: none; /* Отключаем взаимодействие с неактивными секциями */
+}
+
+.main > section.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto; /* Включаем взаимодействие для активной секции */
+    z-index: 2; /* Активная секция поверх остальных */
+}
+  
+.main > section.prev {
+    transform: translateY(-100%);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Intro */
+
+.intro {
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.intro-container {
+    position: relative;
+    min-height: 87vh;
+}
+
+.intro_top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+.intro_left {
+    position: absolute;
+    left: -2vw;
+    top: 38px;
+    z-index: 3;
+    width: 20%;
+}
+
+.intro_right-top {
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    width: 35%;
+}
+
+.intro-container img {
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.intro-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Сохраняет пропорции изображения */
+}
+
+.intro-container img:hover {
+    transform: scale(1.02); /* Легкое увеличение */
+}
+
+.intro_right-bottom {
+    position: absolute;
+    right: -0.8vw;
+    bottom: 0;
+    z-index: 3;
+    width: 40%;
+}
+
+.intro_girl {
+    position: absolute;
+    bottom: -50px;
+    left: 20vw;
+    z-index: 3;
+    width: 45%;
+}
+
+.intro_center {
+    position: absolute;
+    bottom: 0;
+    left: 24vw;
+    z-index: 2;
+    width: 39%;
+}
+
+.intro_back {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    left: 0;
+}
+
+.intro-title {
+    color: rgba(247, 74, 83, 1);
+    line-height: 1; 
+    position: absolute;
+    z-index: 3;
+    font-family: Konstruktor;
+    font-weight: 400;
+    font-size: 164px;
+    display: inline-block; 
+    left: 1vw;
+    top: 25vh;
+
+    /* Толстая обводка букв */
+    -webkit-text-stroke: 15px black; /* Для Safari/Chrome */
+    text-stroke: 15px black; /* Стандартное свойство */
+    paint-order: stroke fill; /* Сначала рисуем обводку, потом текст */
+    
+    /* Дублируем обводку через text-shadow для лучшей поддержки */
+    text-shadow: 
+        -15px -15px 0 black,
+        0 -15px 0 black,
+        15px -15px 0 black,
+        -15px 0 0 black,
+        15px 0 0 black,
+        -15px 15px 0 black,
+        0 15px 0 black,
+        15px 15px 0 black;
+}
+
+.intro-text {
+    position: absolute;
+    z-index: 3;
+    max-width: 450px;
+    font-family: HelveticaNeue-Roman;
+    font-weight: 400;
+    font-size: 18px;
+    bottom: 1vw;
+    left: 1vw;
+    color: white;
+}
+
+.intro-text span {
+    color: gray;
+}
+
+/* Intro */
+
+/* Pictures */
+.pictures {
+    margin-top: 50px;
+    position: relative;
+    min-height: 90vh;
+}
+
+.pictures-container {
+    position: relative;
+    height: 100%;
+}
+
+.pictures-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Сохраняет пропорции изображения */
+}
+
+.pictures_left {
+    position: absolute;
+    left: 0;
+    width: 42%;
+}
+
+.pictures_right-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 62%;
+}
+
+.pictures_right-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24%;
+}
+
+.pictures_center {
+    position: absolute;
+    bottom: 0;
+    left: 25vw;
+    width: 49%;
+}
+
+/* Pictures */
+
+/* Pictures Second */
+
+.pictures-second {
+    height: 98vh;
+}
+
+.pictures-second-container {
+    position: relative;
+    height: 100%;
+}
+
+.pictures-second-container img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; 
+}
+
+.pictures-second_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 51%;
+}
+
+.pictures-second_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 58%;
+}
+
+.pictures-second_bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+/* Pictures Second */
+
+/* About */
+
+.about {
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Черный с 50% прозрачностью */
+    z-index: -1; /* Помещаем под основной контент */
+}
+
+.about-container {
+    position: relative;
+    min-height: 98vh;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-top: 30px;
+}
+
+.about-container img {
+    position: absolute;
+    opacity: 0.1;
+    will-change: transform;
+    max-width: 100%;
+    max-height: auto;
+    object-fit: contain; /* Сохраняет пропорции изображения */
+}
+
+.about_first {
+    position: absolute;
+    left: 0;
+    opacity: 0.1;
+}
+
+.about_second {
+    position: absolute;
+    left: 380px;
+    opacity: 0.1;
+}
+
+.about_third {
+    position: absolute;
+    left: 930px;
+    opacity: 0.1;
+}
+
+.about_fourth {
+    position: absolute;
+    left: 1580px;
+    opacity: 0.1;
+}
+
+.about-container img:hover,
+.about-container img:active {
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+/* About */
+
+/* Main */
+
+/* Footer */
+
+.footer {
+    position: fixed;
+    bottom: -80vh; /* Скрываем полностью */
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 900;
+    overflow-y: auto; /* Добавляем прокрутку если контент не помещается */
+    will-change: transform; /* Оптимизация анимации */
+    overflow: hidden;
+}
+
+.footer.visible,
+.last-section.active ~ .footer {
+    transform: translateY(-100%);
+}
+
+.footer-container {
+    position: relative;
+    height: 100%; /* Занимаем всю высоту футера */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-image: url(../img/fifth_page/footer_back.svg);
+}
+
+.footer-container::before {
+    display: none;
+}
+
+.footer-center {
+    position: relative;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-back {
+    position: absolute;
+    left: 2vw;
+    z-index: 1;
+    opacity: 1;
+}
+
+.footer-center_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    height: 100%;
+}
+
+.footer-center_title {
+    position: relative;
+    font-family: VelaSans-Bold;
+    font-weight: 800;
+    font-size: 105px;
+    color: white;
+    max-width: 675px;
+    z-index: 3;
+    line-height: 90%;
+    text-transform: uppercase;
+}
+
+.footer-center_button {
+    position: relative;
+    z-index: 3;
+    text-decoration: none !important;
+    color: black;
+    background: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-family: VelaSans-Medium;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.footer-center img {
+    max-width: 100%;
+    max-height: auto;
+    object-fit: contain; 
+}
+
+.footer-center_left {
+    position: relative;
+    z-index: 3;
+    width: 30%;
+}
+
+.footer-sssr {
+    position: absolute;
+    left: 100px;
+    top: 0;
+    z-index: 4;
+    width: 20%;
+}
+
+.footer-history {
+    position: absolute;
+    left: 150px;
+    top: 450px;
+    z-index: 4;
+    width: 20%;
+}
+
+.footer-communism {
+    position: absolute;
+    left: 800px;
+    top: 90px;
+    z-index: 4;
+    width: 10%;
+}
+
+.footer-tap {
+    position: absolute;
+    left: 1200px;
+    bottom: 140px;
+    z-index: 4;
+    width: 10%;
+}
+
+.footer-choice {
+    position: absolute;
+    left: 1500px;
+    top: 140px;
+    z-index: 4;
+    width: 10%;
+}
+
+.footer-center_right {
+    position: relative;
+    z-index: 3;
+    width: 30%;
+}
+
+.footer-bottom {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.footer-bottom_button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    color: red;
+    font-family: VelaSans-Light;
+    font-weight: 500;
+    font-size: 24px;
+    margin-right: 20%;
+}
+/* Footer */
+
+
+.intro_mobile {
+    display: none;
+}
+
+.mobile-pictures_img {
+    display: none;
+}
+
+@media(max-width:768px) {
+    .intro{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .intro_mobile {
+        display: block;
+        width: 98vw;
+    }
+
+    .intro-container {
+        display: none;
+    }
+
+    .pictures-container {
+        display: none;
+    }
+
+    .pictures-second {
+        display: none;
+    }
+
+    .pictures {
+        margin-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-pictures_img {
+        display: block;
+        width: 90vw;
+    }
+}
