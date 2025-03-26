@@ -114,6 +114,10 @@ body, html {
 
 /* Header */
 
+.header-nav__item-wrapper {
+    text-decoration: none;
+    color: black !important;
+}
 
 .burger-menu-button {
     display: none;
@@ -195,7 +199,7 @@ header.hidden {
     font-size: 24px;
 }
 
-.header-nav__item:first-of-type {
+.header-nav__item-wrapper:first-of-type .header-nav__item {
     color: red;
 }
 
@@ -257,7 +261,7 @@ header.hidden {
 
 .intro-container {
     position: relative;
-    min-height: 87vh;
+    height: 87vh;
 }
 
 .intro_top {
@@ -379,7 +383,7 @@ header.hidden {
 .pictures {
     margin-top: 50px;
     position: relative;
-    min-height: 90vh;
+    height: 60vh;
 }
 
 .pictures-container {
@@ -408,14 +412,14 @@ header.hidden {
 
 .pictures_right-bottom {
     position: absolute;
-    bottom: 0;
+    top: 40vh;
     right: 0;
     width: 24%;
 }
 
 .pictures_center {
     position: absolute;
-    bottom: 0;
+    top: 29vh;
     left: 25vw;
     width: 49%;
 }
@@ -442,13 +446,13 @@ header.hidden {
 .pictures-second_left {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -3vh;
     width: 51%;
 }
 
 .pictures-second_right {
     position: absolute;
-    top: 0;
+    top: -3vh;
     right: 0;
     width: 58%;
 }
@@ -706,6 +710,10 @@ header.hidden {
     font-size: 24px;
     margin-right: 20%;
 }
+
+.footer-bottom_button:hover {
+    opacity: 0.7;
+}
 /* Footer */
 
 
@@ -758,7 +766,8 @@ header.hidden {
 
     .mobile-pictures_img {
         display: block;
-        width: 90vw;
+        width: 85vw;
+        margin-top: 245px;
     }
 
     .footer {
@@ -814,7 +823,7 @@ header.hidden {
 
     .footer-communism {
         left: 200px;
-        top: 90px;
+        top: 230px;
     }
 
     .footer-center {
@@ -850,7 +859,18 @@ header.hidden {
     }
 
     .burger-menu-button {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin-right: 65px;
+    }
+
+    .burger-menu-button__text {
+        margin-left: 50px;
+        font-family: VelaSans-Light;
+        font-weight: 500;
+        font-size: 16px;
     }
 
     .header-phone {

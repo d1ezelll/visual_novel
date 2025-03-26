@@ -98,6 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function navigateTo(newIndex) {
+        while (newIndex >= 0 && newIndex < sections.length && 
+            (sections[newIndex].style.display === 'none' || 
+             window.getComputedStyle(sections[newIndex]).display === 'none')) {
+         newIndex += (newIndex > currentIndex) ? 1 : -1;
+        }
+
         newIndex = Math.max(0, Math.min(newIndex, sections.length - 1));
         if (newIndex === currentIndex || isScrolling) return;
         
@@ -223,7 +229,7 @@ document.querySelectorAll('.intro-container img').forEach(img => {
         setTimeout(() => {
             img.src = hoverSrc;
             img.style.opacity = '1'; 
-        }, 1); 
+        }, 0,1); 
     });
 
     img.addEventListener('mouseleave', () => {
@@ -231,7 +237,7 @@ document.querySelectorAll('.intro-container img').forEach(img => {
         setTimeout(() => {
             img.src = img.dataset.originalSrc;
             img.style.opacity = '1';
-        }, 1);
+        }, 0,1);
     });
 });
 

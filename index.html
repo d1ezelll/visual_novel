@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visual Novel</title>
-    <link rel="stylesheet" href="./css/styleV4.css">
+    <link rel="stylesheet" href="./css/styleV5.css">
     <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
     <script src="./js/script.js" defer></script>
 </head>
@@ -17,26 +17,37 @@
 
             <div class="header-nav">
                 <ul class="header-nav__list">
-                    <li class="header-nav__item">[ГЛАВНАЯ]</li>
+                    <a href="" class="header-nav__item-wrapper">
+                        <li class="header-nav__item">[ГЛАВНАЯ]</li>
+                    </a>
                     <span>/</span>
-                    <li class="header-nav__item">ОБ ИГРЕ</li>
+                    <a href="" class="header-nav__item-wrapper">
+                        <li class="header-nav__item">ОБ ИГРЕ</li>
+                    </a>
                     <span>/</span>
-                    <li class="header-nav__item">АВТОР</li>
+                    <a href="" class="header-nav__item-wrapper">
+                        <li class="header-nav__item">АВТОР</li>
+                    </a>
                     <span>/</span>
-                    <li class="header-nav__item">
-                        <img src="./img/tg.svg" alt="Telegram">
-                        TELEGRAM
-                    </li>
+                    <a href="" class="header-nav__item-wrapper">
+                        <li class="header-nav__item">
+                            <img src="./img/tg.svg" alt="Telegram">
+                            TELEGRAM
+                        </li>
+                    </a>
                     <span>/</span>
-                    <li class="header-nav__item">
-                        <img src="./img/steam.svg" alt="Steam">
-                        STEAM
-                    </li>
+                    <a href="" class="header-nav__item-wrapper">
+                        <li class="header-nav__item">
+                            <img src="./img/steam.svg" alt="Steam">
+                            STEAM
+                        </li>
+                    </a>
                 </ul>
             </div>
 
             <button id="burger" class="burger-menu-button">
-                <span></span><span></span><span></span>
+                <span></span><span></span><span></span> 
+                <p class="burger-menu-button__text">Меню</p>
             </button>
         </div>
     </header>
